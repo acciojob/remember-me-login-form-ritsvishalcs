@@ -2,18 +2,19 @@ window.addEventListener("DOMContentLoaded", function () {
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
   const checkbox = document.getElementById("checkbox");
+  const submitBtn = document.getElementById("submit");
   const existingBtn = document.getElementById("existing");
 
-  // On page load, check localStorage
   const savedUsername = localStorage.getItem("username");
   const savedPassword = localStorage.getItem("password");
 
+  // Show existing user button if credentials exist
   if (savedUsername && savedPassword) {
     existingBtn.style.display = "inline-block";
   }
 
-  // Handle form submission
-  document.getElementById("loginForm").addEventListener("submit", (e) => {
+  // Handle login form submit
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const username = usernameInput.value.trim();
@@ -33,7 +34,7 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 
   // Handle "Login as existing user"
-  existingBtn.addEventListener("click", () => {
+  existingBtn.addEventListener("click", function () {
     const savedUsername = localStorage.getItem("username");
     if (savedUsername) {
       alert(`Logged in as ${savedUsername}`);
